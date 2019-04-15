@@ -13,8 +13,8 @@ public class Start {
 
 	public static void init() {
 		mars = new LinkedHashMap<>();
-		int x = 80;
-		int y = 20;
+		int x = 100;
+		int y = 30;
 		int rx = x / 2;
 		int ry = y / 2;
 		for (int i = 0; i < x; i++) {
