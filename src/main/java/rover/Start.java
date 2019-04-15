@@ -71,7 +71,7 @@ public class Start {
 					System.out.print("V");
 				else if (get(mars, new int[] { i, j }).equals("e"))
 					System.out.print(">");
-				if (get(mars, new int[] { i, j }).equals("w"))
+				else if (get(mars, new int[] { i, j }).equals("w"))
 					System.out.print("<");
 
 			}
@@ -101,27 +101,27 @@ public class Start {
 
 	public static void make(char c) {
 		int[] p = findeRover();
-		int[] tempPosition = new int[] { p[0], p[1]};
+		int[] tempPos = new int[] { p[0], p[1]};
 
 		if (c == 'f') {
 
-			if (get(mars, p).equals("n"))
+			if (get(mars, p).equals("n") && !get(mars, new int[] { tempPos[0], tempPos[1]-1} ).equals("#"))
 				p[1]--;
-			else if (get(mars, p).equals("s"))
+			else if (get(mars, p).equals("s") && !get(mars, new int[] { tempPos[0], tempPos[1]+1} ).equals("#"))
 				p[1]++;
-			else if (get(mars, p).equals("e"))
+			else if (get(mars, p).equals("e") && !get(mars, new int[] { tempPos[0]+1, tempPos[1]} ).equals("#"))
 				p[0]++;
-			else if (get(mars, p).equals("w"))
+			else if (get(mars, p).equals("w") && !get(mars, new int[] { tempPos[0]-1, tempPos[1]} ).equals("#"))
 				p[0]--;
 		} else if (c == 'b') {
 
-			if (get(mars, p).equals("s"))
+			if (get(mars, p).equals("s") && !get(mars, new int[] { tempPos[0], tempPos[1]-1} ).equals("#"))
 				p[1]--;
-			else if (get(mars, p).equals("n"))
+			else if (get(mars, p).equals("n") && !get(mars, new int[] { tempPos[0], tempPos[1]+1} ).equals("#"))
 				p[1]++;
-			else if (get(mars, p).equals("w"))
+			else if (get(mars, p).equals("w") && !get(mars, new int[] { tempPos[0]+1, tempPos[1]} ).equals("#"))
 				p[0]++;
-			else if (get(mars, p).equals("e"))
+			else if (get(mars, p).equals("e") && !get(mars, new int[] { tempPos[0]-1, tempPos[1]} ).equals("#"))
 				p[0]--;
 		} else if (c == 'l') {
 
