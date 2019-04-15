@@ -22,6 +22,9 @@ public class Start {
 				int[] p = new int[] { i, j };
 				if (r.nextDouble() < 0.25 && !(rx == i && ry == j))
 					mars.put(p, "#");
+                else{
+                    mars.put(p, " ");
+                }
 			}
 		}
 		mars.put(new int[] { rx, ry }, "n");
@@ -40,11 +43,13 @@ public class Start {
 
 	public static String get(Map<int[], String> kloetze, int[] p) {
 		Set<Entry<int[], String>> entrySet = kloetze.entrySet();
+        String value ="";
 		for (Entry<int[], String> entry : entrySet) {
-			if (entry.getKey()[0] == p[0] && entry.getKey()[1] == p[1])
-				return entry.getValue();
+			if (entry.getKey()[0] == p[0] && entry.getKey()[1] == p[1]) {
+                value = entry.getValue();
+            }
 		}
-		return null;
+        return value;
 	}
 
 	public static void out() {
@@ -59,7 +64,7 @@ public class Start {
 			for (int i = 0; i < max[0]; i++) {
 				// System.out.println(i + "," + j + ": " + get(mars, new int[] { i, j }));
 
-				if (get(mars, new int[] { i, j }) == null) {
+				if (get(mars, new int[] { i, j }).equals(" ")) {
 					System.out.print(" ");
 					continue;
 				}
@@ -150,7 +155,7 @@ public class Start {
 	private static int[] findeRover() {
 		Set<Entry<int[], String>> entrySet = mars.entrySet();
 		for (Entry<int[], String> entry : entrySet) {
-			if (entry.getValue() != null && !entry.getValue().equals("#"))
+			if (!entry.getValue().equals(" ") && !entry.getValue().equals("#"))
 				return entry.getKey();
 		}
 		throw new IllegalStateException("Rover missing in action");
