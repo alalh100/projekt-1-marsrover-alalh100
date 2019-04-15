@@ -11,7 +11,8 @@ public class Start {
 	static Random r = new Random();
 	static LinkedHashMap<int[], String> mars;
 
-	public static void init() {
+
+    public static void initField() {
 		mars = new LinkedHashMap<>();
 		int x = 80;
 		int y = 20;
@@ -20,9 +21,9 @@ public class Start {
 		for (int i = 0; i < x; i++) {
 			for (int j = 0; j < y; j++) {
 				int[] p = new int[] { i, j };
-				if (r.nextDouble() < 0.25 && !(rx == i && ry == j))
+				if (r.nextDouble() < 0.25 && !(rx == i && ry == j)) {
 					mars.put(p, "#");
-                else{
+				}else{
                     mars.put(p, " ");
                 }
 			}
@@ -30,15 +31,15 @@ public class Start {
 		mars.put(new int[] { rx, ry }, "n");
 	}
 
-	public static int[] maximum(Set<int[]> set) {
-		int[] x = new int[2];
+	public static int[] getMaximum(Set<int[]> set) {
+		int[] max = new int[2];
 		for (int[] e : set) {
-			if (e[0] > x[0])
-				x[0] = e[0];
-			if (e[1] > x[1])
-				x[1] = e[1];
+			if (e[0] > max[0])
+				max[0] = e[0];
+			if (e[1] > max[1])
+				max[1] = e[1];
 		}
-		return x;
+		return max;
 	}
 
 	public static String get(Map<int[], String> kloetze, int[] p) {
@@ -52,17 +53,11 @@ public class Start {
         return value;
 	}
 
-	public static void out() {
-		// Set<int[]> keySet = mars.keySet();
-		// for (int[] e : keySet) {
-		// if (e[0] == 39 && e[1] == 10)
-		// System.err.println(mars.get(e) + " " + e.hashCode());
-		// }
+	public static void drawOutput() {
 
-		int[] max = maximum(mars.keySet());
+		int[] max = getMaximum(mars.keySet());
 		for (int j = 0; j < max[1]; j++) {
 			for (int i = 0; i < max[0]; i++) {
-				// System.out.println(i + "," + j + ": " + get(mars, new int[] { i, j }));
 
 				if (get(mars, new int[] { i, j }).equals(" ")) {
 					System.out.print(" ");
@@ -95,16 +90,16 @@ public class Start {
 			r.setSeed(seed);
 			// System.out.println("Seed: " + seed);
 		}
-		init();
+		initField();
 		String pg = args[0];
-		out();
+		drawOutput();
 		for (int i = 0; i < pg.length(); i++) {
-			make(pg.charAt(i));
-			out();
+			makeMovement(pg.charAt(i));
+			drawOutput();
 		}
 	}
 
-	public static void make(char c) {
+	public static void makeMovement(char c) {
 		int[] p = findeRover();
 		int[] tempPos = new int[] { p[0], p[1]};
 
