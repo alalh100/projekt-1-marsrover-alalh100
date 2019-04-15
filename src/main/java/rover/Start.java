@@ -101,6 +101,7 @@ public class Start {
 
 	public static void make(char c) {
 		int[] p = findeRover();
+		int[] tempPosition = new int[] { p[0], p[1]};
 
 		if (c == 'f') {
 
