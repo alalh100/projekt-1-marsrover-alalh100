@@ -12,6 +12,21 @@ public class Start {
 	static LinkedHashMap<int[], String> mars;
 
 
+	public static void main(String[] args) {
+
+		if (args.length > 1) {
+			long seed = Long.parseLong(args[1]);
+			r.setSeed(seed);
+		}
+		initField();
+		String pg = args[0];
+		drawOutput();
+		for (int i = 0; i < pg.length(); i++) {
+			makeMovement(pg.charAt(i));
+			drawOutput();
+		}
+	}
+
     public static void initField() {
 		mars = new LinkedHashMap<>();
 		int x = 80;
@@ -83,21 +98,7 @@ public class Start {
 		System.out.println();
 	}
 
-	public static void main(String[] args) {
 
-		if (args.length > 1) {
-			long seed = Long.parseLong(args[1]);
-			r.setSeed(seed);
-			// System.out.println("Seed: " + seed);
-		}
-		initField();
-		String pg = args[0];
-		drawOutput();
-		for (int i = 0; i < pg.length(); i++) {
-			makeMovement(pg.charAt(i));
-			drawOutput();
-		}
-	}
 
 	public static void makeMovement(char c) {
 		int[] p = findeRover();
