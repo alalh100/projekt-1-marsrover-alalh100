@@ -8,8 +8,8 @@ import java.util.Set;
 
 public class Start {
 
-	static Random r = new Random();
-	static LinkedHashMap<int[], String> mars;
+	private static Random r = new Random();
+	private static LinkedHashMap<int[], String> mars;
 
 
 	public static void main(String[] args) {
@@ -27,7 +27,7 @@ public class Start {
 		}
 	}
 
-    public static void initField() {
+    private static void initField() {
 		mars = new LinkedHashMap<>();
 		int x = 80;
 		int y = 20;
@@ -46,7 +46,7 @@ public class Start {
 		mars.put(new int[] { rx, ry }, "n");
 	}
 
-	public static int[] getMaximum(Set<int[]> set) {
+	private static int[] getMaximum(Set<int[]> set) {
 		int[] max = new int[2];
 		for (int[] e : set) {
 			if (e[0] > max[0])
@@ -57,7 +57,7 @@ public class Start {
 		return max;
 	}
 
-	public static String get(Map<int[], String> kloetze, int[] p) {
+	private static String get(Map<int[], String> kloetze, int[] p) {
 		Set<Entry<int[], String>> entrySet = kloetze.entrySet();
         String value ="";
 		for (Entry<int[], String> entry : entrySet) {
@@ -68,7 +68,7 @@ public class Start {
         return value;
 	}
 
-	public static void drawOutput() {
+	private static void drawOutput() {
 
 		int[] max = getMaximum(mars.keySet());
 		for (int j = 0; j < max[1]; j++) {
@@ -99,8 +99,7 @@ public class Start {
 	}
 
 
-
-	public static void makeMovement(char c) {
+	private static void makeMovement(char c) {
 		int[] p = findeRover();
 		int[] tempPos = new int[] { p[0], p[1]};
 
