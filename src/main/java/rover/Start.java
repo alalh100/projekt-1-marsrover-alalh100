@@ -74,7 +74,7 @@ public class Start {
 		for (int j = 0; j < max[1]; j++) {
 			for (int i = 0; i < max[0]; i++) {
 
-				if (get(mars, new int[] { i, j }).equals(" ")) {
+				if (get(mars, new int[] { i, j }).equals(" ")){
 					System.out.print(" ");
 					continue;
 				}
