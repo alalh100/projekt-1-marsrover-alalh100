@@ -1,10 +1,7 @@
 package rover;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Random;
-import java.util.Set;
+
 
 public class Start {
 
@@ -152,7 +149,6 @@ public class Start {
 		}
 
 	}
-
 
 	private static int[] findeRover() {
 
