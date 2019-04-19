@@ -73,55 +73,65 @@ public class Start {
 		return true;
 	}
 
-
 	private static void makeMovement( char eingabe){
 
-        int[] roverPosition = findeRover();
-        int zeile = roverPosition[0];
-        int spalte = roverPosition[1];
+		if( eingabe == 'f') goForward();
+		else if ( eingabe == 'b') goBackward();
 
-        char direction = mars[zeile ][spalte];
+	}
 
-		if( eingabe == 'f') {
-            if(direction =='<' && isGoodPosition(zeile  , spalte-1) ) {
-                mars[zeile ][spalte-1]= direction;
-                mars[zeile ][spalte] = ' ';
-            }
-            else if(direction =='>' && isGoodPosition(zeile  , spalte+1) ) {
-                mars[zeile ][spalte+1]= direction ;
-                mars[zeile ][spalte] = ' ';
-            }
-            else if(direction =='^'  && isGoodPosition(zeile -1 , spalte)){
-                mars[zeile-1 ][spalte]= direction;
-                mars[zeile ][spalte] = ' ';
-            }
-            else if(direction =='v' && isGoodPosition(zeile +1 , spalte) ) {
-                mars[zeile+1 ][spalte]= direction;
-                mars[zeile ][spalte] = ' ';
-            }
-        }
-		else if ( eingabe == 'b'){
+	private static void goForward(){
 
-            if(direction =='<' && isGoodPosition(zeile  , spalte+1) ) {
-                mars[zeile ][spalte+1]= direction;
-                mars[zeile ][spalte] = ' ';
-            }
-            else if(direction =='>' && isGoodPosition(zeile  , spalte-1) ) {
-                mars[zeile ][spalte+1]= direction ;
-                mars[zeile ][spalte] = ' ';
-            }
-            else if(direction =='^'  && isGoodPosition(zeile +1 , spalte)){
-                mars[zeile+1 ][spalte]= direction;
-                mars[zeile ][spalte] = ' ';
-            }
-            else if(direction =='v' && isGoodPosition(zeile -1 , spalte) ) {
-                mars[zeile-1 ][spalte]= direction;
-                mars[zeile ][spalte] = ' ';
-            }
+		int[] roverPosition = findeRover();
+		int zeile = roverPosition[0];
+		int spalte = roverPosition[1];
 
-        }
+		char direction = mars[zeile ][spalte];
 
-    }
+		if(direction =='<' && isGoodPosition(zeile  , spalte-1) ) {
+			mars[zeile ][spalte-1]= direction;
+			mars[zeile ][spalte] = ' ';
+		}
+		else if(direction =='>' && isGoodPosition(zeile  , spalte+1) ) {
+			mars[zeile ][spalte+1]= direction ;
+			mars[zeile ][spalte] = ' ';
+		}
+		else if(direction =='^'  && isGoodPosition(zeile -1 , spalte)){
+			mars[zeile-1 ][spalte]= direction;
+			mars[zeile ][spalte] = ' ';
+		}
+		else if(direction =='v' && isGoodPosition(zeile +1 , spalte) ) {
+			mars[zeile+1 ][spalte]= direction;
+			mars[zeile ][spalte] = ' ';
+		}
+	}
+
+	private static void goBackward(){
+
+		int[] roverPosition = findeRover();
+		int zeile = roverPosition[0];
+		int spalte = roverPosition[1];
+
+		char direction = mars[zeile ][spalte];
+
+		if(direction =='<' && isGoodPosition(zeile  , spalte+1) ) {
+			mars[zeile ][spalte+1]= direction;
+			mars[zeile ][spalte] = ' ';
+		}
+		else if(direction =='>' && isGoodPosition(zeile  , spalte-1) ) {
+			mars[zeile ][spalte+1]= direction ;
+			mars[zeile ][spalte] = ' ';
+		}
+		else if(direction =='^'  && isGoodPosition(zeile +1 , spalte)){
+			mars[zeile+1 ][spalte]= direction;
+			mars[zeile ][spalte] = ' ';
+		}
+		else if(direction =='v' && isGoodPosition(zeile -1 , spalte) ) {
+			mars[zeile-1 ][spalte]= direction;
+			mars[zeile ][spalte] = ' ';
+		}
+	}
+
 
 	private static void directTheRover(char eingabe){
 		int[] roverPosition = findeRover();
