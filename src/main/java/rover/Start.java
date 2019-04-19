@@ -26,6 +26,7 @@ public class Start {
 		drawOutput();
 
 		for (int i = 0; i < eingabe.length(); i++) {
+			directTheRover(eingabe.charAt(i));
 			makeMovement(eingabe.charAt(i));
 			drawOutput();
 		}
@@ -119,21 +120,28 @@ public class Start {
             }
 
         }
-        else if(eingabe =='l'){
-            if( direction =='^') mars[zeile][spalte]='<';
-            else if( direction =='<') mars[zeile][spalte]='v';
-            else if( direction =='v') mars[zeile][spalte]='>';
-            else if( direction =='>') mars[zeile][spalte]='^';
-        }
-        else if(eingabe =='r'){
-            if(direction =='^') mars[zeile][spalte]='>';
-            else if( direction =='<') mars[zeile][spalte]='^';
-            else if( direction =='v') mars[zeile][spalte]='<';
-            else if( direction =='>') mars[zeile][spalte]='v';
-        }
-
 
     }
+
+	private static void directTheRover(char eingabe){
+		int[] roverPosition = findeRover();
+		int zeile = roverPosition[0];
+		int spalte = roverPosition[1];
+
+		if(eingabe =='l'){
+			if( mars[ zeile][spalte]=='^') mars[zeile][spalte]='<';
+			else if( mars[ zeile][spalte]=='<') mars[zeile][spalte]='v';
+			else if( mars[ zeile][spalte]=='v') mars[zeile][spalte]='>';
+			else if( mars[ zeile][spalte]=='>') mars[zeile][spalte]='^';
+		}
+		else if(eingabe =='r'){
+			if( mars[ zeile][spalte]=='^') mars[zeile][spalte]='>';
+			else if( mars[ zeile][spalte]=='<') mars[zeile][spalte]='^';
+			else if( mars[ zeile][spalte]=='v') mars[zeile][spalte]='<';
+			else if( mars[ zeile][spalte]=='>') mars[zeile][spalte]='v';
+		}
+
+	}
 
 
 	private static int[] findeRover() {
